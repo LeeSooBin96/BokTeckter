@@ -1,0 +1,4 @@
+*VC*
+*.vsidx
+x64/
+ipch/
