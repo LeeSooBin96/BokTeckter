@@ -13,7 +13,7 @@
 #pragma comment(linker,"/entry:wWinMainCRTStartup /subsystem:console")
 #endif
 
-
+using namespace std;
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -110,13 +110,14 @@ BOOL CMFCServerDlg::OnInitDialog()
 	GetDlgItem(IDC_BTN_OPEN)->SetFont(&font);
 	GetDlgItem(IDC_BTN_CLOSE)->SetFont(&font);
 
+	testImgAnal();
 	/* DB 연결 테스트용 */
-	//db = new CDBHandle; /* DB 연동 클래스 객체 생성 */
-	//db->initializeDB(); /* DB 연결 */
-	//db->excuteQuery("SELECT * FROM actor");
+	//m_pDB = new CDBHandle; /* DB 연동 클래스 객체 생성 */
+	//m_pDB->initializeDB(); /* DB 연결 */
+	//m_pDB->excuteQuery("SELECT * FROM actor");
 	//CArray<const char*> list;
 	//int nCNum;
-	//nCNum=db->getQueryResult(list);
+	//nCNum=m_pDB->getQueryResult(list);
 	//for (int j = 0; j < list.GetSize()/nCNum; j++) {
 	//	for (int i = 0; i < nCNum; i++) {
 	//		std::cout << list[j * nCNum + i] << " ";
@@ -183,8 +184,30 @@ void CMFCServerDlg::OnDestroy()
 	CDialogEx::OnDestroy();
 
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
-	if (db != NULL) {
-		db->destroyConnect(); /* DB 연결 종료 */
-		delete db;
+	if (m_pDB != NULL) {
+		m_pDB->destroyConnect(); /* DB 연결 종료 */
+		delete m_pDB;
 	}
+}
+
+
+void CMFCServerDlg::testImgAnal()
+{
+	CImage image;
+	image.Load(_T("..//Image/test.png"));
+
+	int nWidth = image.GetWidth();
+	int nHeight = image.GetHeight();
+	int nPitch = image.GetPitch();
+	unsigned char* fm = (unsigned char*)image.GetBits();
+
+	cout << image.GetBPP() << endl;
+	/*static RGBQUAD rgb[256];
+	for(int i=0;i<256)*/
+
+	/*for (int j = 0; j < image.GetHeight(); j++) {
+		for (int i = 0; i < image.GetWidth(); i++) {
+			
+		}
+	}*/
 }

@@ -8,7 +8,10 @@
 // CMFCServerDlg 대화 상자
 class CMFCServerDlg : public CDialogEx
 {
-	CDBHandle* db=NULL; //DB 연동 클래스
+	CDBHandle* m_pDB=NULL; //DB 연동 클래스
+
+public:
+	void testImgAnal();
 
 // 생성입니다.
 public:
