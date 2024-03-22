@@ -10,6 +10,7 @@
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
+#pragma comment(linker,"/entry:wWinMainCRTStartup /subsystem:console")
 #endif
 
 
@@ -65,6 +66,7 @@ BEGIN_MESSAGE_MAP(CMFCServerDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -107,6 +109,20 @@ BOOL CMFCServerDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_RES)->SetFont(&font);
 	GetDlgItem(IDC_BTN_OPEN)->SetFont(&font);
 	GetDlgItem(IDC_BTN_CLOSE)->SetFont(&font);
+
+	/* DB 연결 테스트용 */
+	//db = new CDBHandle; /* DB 연동 클래스 객체 생성 */
+	//db->initializeDB(); /* DB 연결 */
+	//db->excuteQuery("SELECT * FROM actor");
+	//CArray<const char*> list;
+	//int nCNum;
+	//nCNum=db->getQueryResult(list);
+	//for (int j = 0; j < list.GetSize()/nCNum; j++) {
+	//	for (int i = 0; i < nCNum; i++) {
+	//		std::cout << list[j * nCNum + i] << " ";
+	//	}
+	//	std::cout << std::endl;
+	//}
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -160,3 +176,15 @@ HCURSOR CMFCServerDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CMFCServerDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	if (db != NULL) {
+		db->destroyConnect(); /* DB 연결 종료 */
+		delete db;
+	}
+}
