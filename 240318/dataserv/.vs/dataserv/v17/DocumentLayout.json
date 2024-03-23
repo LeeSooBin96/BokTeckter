@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\n\\source\\repos\\dataserv\\",
+  "WorkspaceRootPath": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\240318\\dataserv\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63BC9472-9C9A-4FDC-BB8C-D5526C293D34}|dataserv.vcxproj|C:\\Users\\n\\source\\repos\\dataserv\\dataserv.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{63BC9472-9C9A-4FDC-BB8C-D5526C293D34}|dataserv.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\240318\\dataserv\\dataserv.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{63BC9472-9C9A-4FDC-BB8C-D5526C293D34}|dataserv.vcxproj|solutionrelative:dataserv.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "dataserv.cpp",
-              "DocumentMoniker": "C:\\Users\\n\\source\\repos\\dataserv\\dataserv.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\240318\\dataserv\\dataserv.cpp",
               "RelativeDocumentMoniker": "dataserv.cpp",
-              "ToolTip": "C:\\Users\\n\\source\\repos\\dataserv\\dataserv.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\240318\\dataserv\\dataserv.cpp",
               "RelativeToolTip": "dataserv.cpp",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAAUAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-17T06:42:08.641Z",
               "EditorCaption": ""
