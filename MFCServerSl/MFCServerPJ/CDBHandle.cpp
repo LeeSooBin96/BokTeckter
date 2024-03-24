@@ -33,12 +33,12 @@ void CDBHandle::excuteQuery(const char* query)
 }
 
 int CDBHandle::getQueryResult(CArray<const char*>& list)
-{ 
+{
 	MYSQL_RES* sqlRes = mysql_store_result(connection); //결과 불러올 포인터
 	int nRowNum = sqlRes->row_count; //결과 행의 개수
 	int nColNum = sqlRes->field_count; //결과 열의 개수
 	MYSQL_ROW sqlRow;
-	
+
 	list.SetSize(nRowNum * nColNum);
 	for (int j = 0; j < nRowNum; j++) {
 		sqlRow = mysql_fetch_row(sqlRes);
@@ -49,7 +49,7 @@ int CDBHandle::getQueryResult(CArray<const char*>& list)
 			list[j * nColNum + i] = sqlRow[i];
 		}
 	}
-	
+
 	mysql_free_result(sqlRes);
 	return nColNum;
 }

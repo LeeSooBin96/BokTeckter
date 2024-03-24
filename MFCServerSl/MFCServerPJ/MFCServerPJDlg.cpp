@@ -10,6 +10,7 @@
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
+#pragma comment(linker,"/entry:wWinMainCRTStartup /subsystem:console")
 #endif
 
 
@@ -65,6 +66,9 @@ BEGIN_MESSAGE_MAP(CMFCServerPJDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BTN_OPEN, &CMFCServerPJDlg::OnBnClickedBtnOpen)
+	ON_BN_CLICKED(IDC_BTN_CLOSE, &CMFCServerPJDlg::OnBnClickedBtnClose)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -100,6 +104,14 @@ BOOL CMFCServerPJDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	SetWindowText(_T("MFCServer")); /* 창 제목 설정 */
+	/* 컨트롤 폰트 크기 설정 */
+	CFont font;
+	GetDlgItem(IDC_STATIC_AI)->SetFont(&font);
+	GetDlgItem(IDC_AI_RESULT)->SetFont(&font);
+	GetDlgItem(IDC_BTN_OPEN)->SetFont(&font);
+	GetDlgItem(IDC_BTN_CLOSE)->SetFont(&font);
+
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -153,3 +165,26 @@ HCURSOR CMFCServerPJDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CMFCServerPJDlg::OnBnClickedBtnOpen()
+{ 
+	/* 서버 오픈 */
+}
+
+
+void CMFCServerPJDlg::OnBnClickedBtnClose()
+{
+	/* 서버 종료 */
+}
+
+
+void CMFCServerPJDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	if (m_pDB != NULL) {
+		m_pDB->destroyConnect(); /* DB 연결 종료 */
+		delete m_pDB;
+	}
+}
