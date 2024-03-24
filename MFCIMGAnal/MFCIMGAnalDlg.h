@@ -34,4 +34,6 @@ protected:
 public:
 	afx_msg void OnBnClickedBtnImg();
 	CStatic m_picture_control;
+
+	//bool isGreenHead(CImage* image);
 };
