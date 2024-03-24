@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aiot\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\Aiot\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     ",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\MFCServerPJ.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     "
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MFCServerPJ.rc - IDD_MFCSERVERPJ_DIALOG - Dialog",
+              "DocumentMoniker": "C:\\Users\\Aiot\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.rc",
+              "RelativeDocumentMoniker": "MFCServerPJ\\MFCServerPJ.rc",
+              "ToolTip": "C:\\Users\\Aiot\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.rc - IDD_MFCSERVERPJ_DIALOG - Dialog",
+              "RelativeToolTip": "MFCServerPJ\\MFCServerPJ.rc - IDD_MFCSERVERPJ_DIALOG - Dialog",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-03-24T05:43:27.333Z",
+              "EditorCaption": " - IDD_MFCSERVERPJ_DIALOG - Dialog"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
