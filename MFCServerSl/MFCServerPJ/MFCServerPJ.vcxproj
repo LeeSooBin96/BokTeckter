@@ -187,6 +187,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CDBHandle.h" />
+    <ClInclude Include="CDetectDef.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MFCServerPJ.h" />
     <ClInclude Include="MFCServerPJDlg.h" />
@@ -196,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDBHandle.cpp" />
+    <ClCompile Include="CDetectDef.cpp" />
     <ClCompile Include="MFCServerPJ.cpp" />
     <ClCompile Include="MFCServerPJDlg.cpp" />
     <ClCompile Include="pch.cpp">

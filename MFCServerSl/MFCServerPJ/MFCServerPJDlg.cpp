@@ -170,12 +170,31 @@ HCURSOR CMFCServerPJDlg::OnQueryDragIcon()
 void CMFCServerPJDlg::OnBnClickedBtnOpen()
 { 
 	/* 서버 오픈 */
+	//서버 오픈 -> AI 모델 연결/ DB 연결 -> 클라이언트 연결 대기
+	//서버 오픈
+	
+	//AI 모델 연결
+	
+	//DB 연결
+	m_pDB = new CDBHandle;
+	m_pDB->initializeDB(); /* DB 초기화 및 연결 */
+	
+	//클라이언트 연결 대기
+
 }
 
 
 void CMFCServerPJDlg::OnBnClickedBtnClose()
 {
 	/* 서버 종료 */
+	//서버 종료 -> DB 연결 종료
+	//서버 종료
+
+	//DB 연결 종료
+	if (m_pDB != NULL) {
+		m_pDB->destroyConnect(); /* DB 연결 종료 */
+		delete m_pDB;
+	}
 }
 
 
@@ -183,8 +202,9 @@ void CMFCServerPJDlg::OnDestroy()
 {
 	CDialogEx::OnDestroy();
 
-	if (m_pDB != NULL) {
-		m_pDB->destroyConnect(); /* DB 연결 종료 */
-		delete m_pDB;
-	}
+	OnBnClickedBtnClose();
+	//if (m_pDB != NULL) {
+	//	m_pDB->destroyConnect(); /* DB 연결 종료 */
+	//	delete m_pDB;
+	//}
 }

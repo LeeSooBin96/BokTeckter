@@ -36,6 +36,9 @@
     <ClInclude Include="CDBHandle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CDetectDef.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCServerPJ.cpp">
@@ -48,6 +51,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CDBHandle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CDetectDef.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
