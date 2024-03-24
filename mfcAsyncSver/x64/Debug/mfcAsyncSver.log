@@ -1,0 +1,9 @@
+﻿  listenSock.cpp
+C:\Users\user\source\repos\mfcAsyncSver\mfcAsyncSver\listenSock.cpp(84,49): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/listenSock.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\user\source\repos\mfcAsyncSver\mfcAsyncSver\listenSock.cpp(90,53): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/listenSock.cpp'을(를) 컴파일하는 중)
+  
+mfcAsyncSverDlg.obj : warning LNK4258: '/entry:WinMainCRTStartup' 지시문은 '/ENTRY:wWinMainCRTStartup' 스위치와 호환되지 않습니다. 무시됩니다.
+  mfcAsyncSver.vcxproj -> C:\Users\user\source\repos\mfcAsyncSver\x64\Debug\mfcAsyncSver.exe
