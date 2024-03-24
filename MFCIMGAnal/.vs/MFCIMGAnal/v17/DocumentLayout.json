@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\",
+  "WorkspaceRootPath": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnalDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|solutionrelative:MFCIMGAnalDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnalDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MFCIMGAnalDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\test.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|solutionrelative:test.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\test.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:test.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnal.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     ",
-      "RelativeMoniker": "D:0:0:{DD7A3E08-D2EC-4BD8-B2E0-B161DC8E9BB3}|MFCIMGAnal.vcxproj|solutionrelative:MFCIMGAnal.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     "
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnal.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     ",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MFCIMGAnal.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       % \u0086 2$  \u0022     "
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +22,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -32,9 +36,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "test.png - PNG [640x480, 24\uBE44\uD2B8, PNG]",
-              "DocumentMoniker": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\test.png",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\test.png",
               "RelativeDocumentMoniker": "test.png",
-              "ToolTip": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\test.png - PNG [640x480, 24\uBE44\uD2B8, PNG]",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\test.png - PNG [640x480, 24\uBE44\uD2B8, PNG]",
               "RelativeToolTip": "test.png - PNG [640x480, 24\uBE44\uD2B8, PNG]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
               "WhenOpened": "2024-03-23T05:06:03.53Z",
@@ -44,9 +48,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MFCIMGAnalDlg.cpp",
-              "DocumentMoniker": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnalDlg.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnalDlg.cpp",
               "RelativeDocumentMoniker": "MFCIMGAnalDlg.cpp",
-              "ToolTip": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnalDlg.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnalDlg.cpp",
               "RelativeToolTip": "MFCIMGAnalDlg.cpp",
               "ViewState": "AQIAANIAAAAAAAAAAAAAAN0AAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -57,9 +61,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MFCIMGAnal.rc - IDD_MFCIMGANAL_DIALOG - Dialog",
-              "DocumentMoniker": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnal.rc",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnal.rc",
               "RelativeDocumentMoniker": "MFCIMGAnal.rc",
-              "ToolTip": "C:\\Users\\Aiot\\MFC\\MFCIMGAnal\\MFCIMGAnal.rc - IDD_MFCIMGANAL_DIALOG - Dialog",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCIMGAnal\\MFCIMGAnal.rc - IDD_MFCIMGANAL_DIALOG - Dialog",
               "RelativeToolTip": "MFCIMGAnal.rc - IDD_MFCIMGANAL_DIALOG - Dialog",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
               "WhenOpened": "2024-03-23T05:01:19.267Z",
