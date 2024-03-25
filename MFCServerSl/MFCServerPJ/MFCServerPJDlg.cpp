@@ -1,5 +1,4 @@
-﻿
-// MFCServerPJDlg.cpp: 구현 파일
+﻿// MFCServerPJDlg.cpp: 구현 파일
 //
 
 #include "pch.h"
@@ -289,13 +288,39 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 {
 	/* 공정 클라이언테 요청 데이터 처리 */
 	TCHAR* buffer = NULL;
-	pSocket->RecvData(buffer);
+	int len = pSocket->RecvData(buffer);
+	//std::locale::global(std::locale("kor")); //유니코드 문자 콘솔에 출력되게 해줌
 	/* 처음 받는 데이터는 이미지 파일 -> 저장하자 
 	 * 그러고 검사 로직 실행하고
 	 * 검사 결과 보내주기
 	 * 검사 결과 DB 저장
 	 */
+	//파일 저장
+	 //CFile saveFile; // 객체 만들고
+	 //saveFile.Open(_T("..//save.png"), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary);
+	 //saveFile.Write(buffer, len); //파일 저장 잘되는것 까지 확인 완료
+	 //saveFile.Close(); //여기서도 확인
+	//받은 메시지 확인
 	//CString strMSG(buffer);
-	//wcout << (LPCSTR)(LPCTSTR)strMSG << endl; //받은 메시지 확인하고 싶으면
-
+	//wcout << (LPCSTR)(LPCTSTR)strMSG<<" " << strMSG.GetLength() << endl; //받은 메시지 확인하고 싶으면
+	//메시지 보낼때
+	/*CString temp = _T("PASS");
+	TCHAR* msg = (LPTSTR)(LPCTSTR)temp;
+	wcout << msg << endl;
+	pSocket->Send(msg, temp.GetLength() * sizeof(TCHAR), 0); */
+	//파일 송신
+	//CFile readFile;
+	//readFile.Open(_T("..//save.png"), CFile::modeRead|CFile::typeBinary);
+	//int nSize = readFile.GetLength();
+	//TCHAR* data = new TCHAR[4];
+	//_itow(nSize,data,10);
+	//pSocket->Send(data,4,0);
+	//
+	//data = new TCHAR[nSize];
+	//readFile.Read(data, nSize);
+	//pSocket->Send(data, nSize, 0);
+	//
+	//readFile.Close();
+	delete buffer;
+	//delete data;
 }
