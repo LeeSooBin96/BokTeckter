@@ -55,6 +55,14 @@ CMFCServerPJDlg::CMFCServerPJDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCSERVERPJ_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	
+	AfxSocketInit(); //소켓 함수 사용을 위함
+
+	/* 멤버 포인터 변수 초기화 */
+	m_pListenSock = NULL;
+	m_pDB = NULL;
+
+	m_pAIClient = NULL;
 }
 
 void CMFCServerPJDlg::DoDataExchange(CDataExchange* pDX)
@@ -113,6 +121,8 @@ BOOL CMFCServerPJDlg::OnInitDialog()
 	GetDlgItem(IDC_BTN_CLOSE)->SetFont(&font);
 
 
+	
+
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -165,22 +175,36 @@ HCURSOR CMFCServerPJDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
+void ErrQuit(int err) //오류 상황을 파악할 수 있는 코드!
+{
+	LPVOID lpMsgBuf;
+	FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+		NULL, err,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR)&lpMsgBuf, 0, NULL); //lpMsgBuf에 에러 메시지 받아오는 듯!
+	MessageBox(NULL, (LPCTSTR)lpMsgBuf, _T("오류 발생"), MB_ICONERROR); //에러 메시지 박스 출력
+	LocalFree(lpMsgBuf); //메모리 할당 해제 같지?
+	//exit(1); //프로그램 종료
+}
 
 void CMFCServerPJDlg::OnBnClickedBtnOpen()
 { 
 	/* 서버 오픈 */
 	//서버 오픈 -> AI 모델 연결/ DB 연결 -> 클라이언트 연결 대기
 	//서버 오픈
-	
-	//AI 모델 연결
+	if (m_pListenSock != NULL) {
+		AfxMessageBox(_T("서버가 이미 오픈되어 있습니다."), MB_ICONERROR);
+		return;
+	}
+	m_pListenSock = new CListenSocket(this);
+	if(!m_pListenSock->Create(26001)) ErrQuit(m_pListenSock->GetLastError());
+	if(!m_pListenSock->Listen()) cout<<"연결 대기 x \n"; //클라이언트 연결 대기
+	cout << "서버가 오픈되었습니다.\n";
 	
 	//DB 연결
 	m_pDB = new CDBHandle;
 	m_pDB->initializeDB(); /* DB 초기화 및 연결 */
-	
-	//클라이언트 연결 대기
-
 }
 
 
@@ -189,22 +213,89 @@ void CMFCServerPJDlg::OnBnClickedBtnClose()
 	/* 서버 종료 */
 	//서버 종료 -> DB 연결 종료
 	//서버 종료
-
+	if (m_pListenSock != NULL) {
+		m_pListenSock->Close();
+		delete m_pListenSock;
+		m_pListenSock = NULL; //재초기화
+		cout << "서버가 종료되었습니다.\n";
+	}
 	//DB 연결 종료
 	if (m_pDB != NULL) {
 		m_pDB->destroyConnect(); /* DB 연결 종료 */
 		delete m_pDB;
+		m_pDB = NULL; //재초기화
 	}
 }
 
 
 void CMFCServerPJDlg::OnDestroy()
 {
-	CDialogEx::OnDestroy();
-
 	OnBnClickedBtnClose();
-	//if (m_pDB != NULL) {
-	//	m_pDB->destroyConnect(); /* DB 연결 종료 */
-	//	delete m_pDB;
-	//}
+	CDialogEx::OnDestroy();
+}
+
+
+void CMFCServerPJDlg::ProcessAccept(int nErrorCode)
+{
+	//listenSock이 CAsyncSocket상속이라 비동기로 돌아가고
+	//accept될 때마다 동적으로 CSocket의 객체가 만들어지는 듯
+
+	/* 클라이언트 연결 수락-> 구분 (AI -> 따로 저장(가장 처음 연결되는 클라이언트
+	 * 공정 클라이언트는 리스트(배열)에 저장)
+	 */
+	ASSERT(nErrorCode == 0);
+
+	if (m_pAIClient == NULL) { //첫번째 클라이언트이면
+		CSocket* pClient = new CSocket;
+		if (!m_pListenSock->Accept(*pClient)) {
+			delete pClient;
+			cout << "AI 클라이언트 연결 수락 실패 \n";
+			return;
+		}
+		m_pAIClient = pClient; //소켓 포인터 저장
+		cout << "AI 접속 완료 \n";
+	}
+	else { //일반 공정 클라이언트 처리
+		CDataSocket* pFactoryCLT = new CDataSocket(this); //각 클라이언트에 대해 비동기 처리
+		if (!m_pListenSock->Accept(*pFactoryCLT)) {
+			delete pFactoryCLT;
+			cout << "클라이언트 연결 수락 실패 \n";
+			return;
+		}
+		m_arrCLTList.Add(pFactoryCLT); //리스트(배열)에 저장
+		cout << m_arrCLTList.GetCount() << "번 클라이언트가 접속하였습니다. \n";
+	}
+}
+
+
+void CMFCServerPJDlg::ProcessClose(int nErrorCode)
+{
+	if (m_pAIClient != NULL) {
+		m_pAIClient->Close();
+		delete m_pAIClient;
+		m_pAIClient = NULL;
+	}
+	if (m_arrCLTList.GetCount() != 0) {
+		for (int i = 0; i < m_arrCLTList.GetCount(); i++) {
+			m_arrCLTList[i]->Close();
+			delete m_arrCLTList[i];
+			m_arrCLTList[i] = NULL;
+		}
+	}
+}
+
+
+void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
+{
+	/* 공정 클라이언테 요청 데이터 처리 */
+	TCHAR* buffer = NULL;
+	pSocket->RecvData(buffer);
+	/* 처음 받는 데이터는 이미지 파일 -> 저장하자 
+	 * 그러고 검사 로직 실행하고
+	 * 검사 결과 보내주기
+	 * 검사 결과 DB 저장
+	 */
+	//CString strMSG(buffer);
+	//wcout << (LPCSTR)(LPCTSTR)strMSG << endl; //받은 메시지 확인하고 싶으면
+
 }

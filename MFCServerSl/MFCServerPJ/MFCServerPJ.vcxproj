@@ -186,8 +186,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CDataSocket.h" />
     <ClInclude Include="CDBHandle.h" />
     <ClInclude Include="CDetectDef.h" />
+    <ClInclude Include="CListenSocket.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MFCServerPJ.h" />
     <ClInclude Include="MFCServerPJDlg.h" />
@@ -196,8 +198,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CDataSocket.cpp" />
     <ClCompile Include="CDBHandle.cpp" />
     <ClCompile Include="CDetectDef.cpp" />
+    <ClCompile Include="CListenSocket.cpp" />
     <ClCompile Include="MFCServerPJ.cpp" />
     <ClCompile Include="MFCServerPJDlg.cpp" />
     <ClCompile Include="pch.cpp">

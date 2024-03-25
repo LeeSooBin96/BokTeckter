@@ -51,5 +51,5 @@ int CDBHandle::getQueryResult(CArray<const char*>& list)
 	}
 
 	mysql_free_result(sqlRes);
-	return nColNum;
+	return nColNum; //결과 열의 개수 반환
 }
