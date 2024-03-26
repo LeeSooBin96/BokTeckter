@@ -10,8 +10,8 @@
         
         Title="MainWindow" Height="480" Width="800">
     <Grid Margin="0,0,0,-6">
-        <Image Name="Cam_1" Margin="6,13,234,45"/>
-        <Image Name="result_frame" Margin="572,10,9,256"/>
+        <Image Name="Cam_1" Margin="572,10,9,256"/>
+        <Image Name="result_frame" Margin="6,13,234,45"/>
         <Button Content="제품 검사 요청" HorizontalAlignment="Left" Margin="585,304,0,0" VerticalAlignment="Top" Height="45" Width="190" Click="Button_Click"/>
         <Button Content="STOP" HorizontalAlignment="Left" Margin="585,364,0,0" VerticalAlignment="Top" Height="50" Width="190" Click="Button_Click_1"/>
         <Button Content="twobtn" HorizontalAlignment="Left" Margin="585,235,0,0" VerticalAlignment="Top" Height="50" Width="190" Click="Button_Click_2"/>

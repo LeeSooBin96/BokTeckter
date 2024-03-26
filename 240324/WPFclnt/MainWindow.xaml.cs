@@ -122,16 +122,13 @@ namespace WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // [*] 영상을 사진으로찍음. 
+            // [*] 영상을 사진으로 캡쳐. 
             Cv2.ImShow("클라?", frame);
             var test_image = frame;
             // frame을 저장해야함.
             Cv2.ImWrite("C:\\test\\TTTTTTTTTTTTTTTTTTTT.jpg", test_image); // 프레임 스크린샷 저장경로+파일명
-            //int i = 0;
             // 업로드 할 파일 정보
             FileInfo file = new FileInfo("C:\\test\\TTTTTTTTTTTTTTTTTTTT.jpg"); // 작업할 파일 불러오기.
-            //FileInfo file = new FileInfo();
-            //stream을 취득?
 
             //[1] 파일오픈
             using (FileStream stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
@@ -158,9 +155,9 @@ namespace WPF
 
                     // 먼저 파일명을 전송한다 
                     // unicode가 아닌 utf8형식으로 전송한다. Send는 변수
-                    Send(Encoding.UTF8.GetBytes("Download.jpg\0")); // 서버에 보낸이미지
+                    Send(Encoding.UTF8.GetBytes("Download.jpg\0")); // 서버에 보낸이미지 이름?
                     // 파일 바이너리 데이터를 보낸다. Send는 변수
-                    Send(data);
+                    Send(data); // 서버에 보내주는 데이터?
                     // 서버로 부터 byte=1 데이터가 오면 클라를 종료한다.
                     byte[] ret = new byte[1];
                     socket.Receive(ret, 1, SocketFlags.None);
