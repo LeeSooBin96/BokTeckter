@@ -1,0 +1,317 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\MFCServerPJ.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CListenSocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CListenSocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\MFCServerPJ.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\MFCServerPJDlg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDetectDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDBHandle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDataSocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDBHandle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDetectDef.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\MFCServerPJDlg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F496C3A0-3CF3-4F79-9E54-3D1F013D8CB2}|MFCServerPJ\\MFCServerPJ.vcxproj|solutionrelative:MFCServerPJ\\CDataSocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "targetver.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\targetver.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\targetver.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\targetver.h",
+              "RelativeToolTip": "MFCServerPJ\\targetver.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-26T01:45:43.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Resource.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\Resource.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\Resource.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\Resource.h",
+              "RelativeToolTip": "MFCServerPJ\\Resource.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-26T01:45:36.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MFCServerPJ.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\MFCServerPJ.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.h",
+              "RelativeToolTip": "MFCServerPJ\\MFCServerPJ.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-26T01:45:26.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "framework.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\framework.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\framework.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\framework.h",
+              "RelativeToolTip": "MFCServerPJ\\framework.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-26T01:45:20.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "pch.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\pch.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.h",
+              "RelativeToolTip": "MFCServerPJ\\pch.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T12:28:04.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MFCServerPJDlg.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\MFCServerPJDlg.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.h",
+              "RelativeToolTip": "MFCServerPJ\\MFCServerPJDlg.h",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAABIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T02:41:41.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CListenSocket.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CListenSocket.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.h",
+              "RelativeToolTip": "MFCServerPJ\\CListenSocket.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T00:38:33.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CListenSocket.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CListenSocket.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CListenSocket.cpp",
+              "RelativeToolTip": "MFCServerPJ\\CListenSocket.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-25T05:24:01.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MFCServerPJ.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\MFCServerPJ.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJ.cpp",
+              "RelativeToolTip": "MFCServerPJ\\MFCServerPJ.cpp",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-26T01:43:16.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CDetectDef.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDetectDef.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.h",
+              "RelativeToolTip": "MFCServerPJ\\CDetectDef.h",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-26T01:45:04.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CDataSocket.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDataSocket.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.h",
+              "RelativeToolTip": "MFCServerPJ\\CDataSocket.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T02:36:30.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CDBHandle.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDBHandle.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.cpp",
+              "RelativeToolTip": "MFCServerPJ\\CDBHandle.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-26T01:42:58.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CDetectDef.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDetectDef.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDetectDef.cpp",
+              "RelativeToolTip": "MFCServerPJ\\CDetectDef.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-26T01:43:09.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CDBHandle.h",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.h",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDBHandle.h",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDBHandle.h",
+              "RelativeToolTip": "MFCServerPJ\\CDBHandle.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T02:24:42.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MFCServerPJDlg.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\MFCServerPJDlg.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\MFCServerPJDlg.cpp",
+              "RelativeToolTip": "MFCServerPJ\\MFCServerPJDlg.cpp",
+              "ViewState": "AQIAALQAAAAAAAAAAAAAAEIBAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-25T01:24:46.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "pch.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\pch.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\pch.cpp",
+              "RelativeToolTip": "MFCServerPJ\\pch.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-26T01:44:01.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CDataSocket.cpp",
+              "DocumentMoniker": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.cpp",
+              "RelativeDocumentMoniker": "MFCServerPJ\\CDataSocket.cpp",
+              "ToolTip": "C:\\Users\\n\\Documents\\GitHub\\BokTeckter\\MFCServerSl\\MFCServerPJ\\CDataSocket.cpp",
+              "RelativeToolTip": "MFCServerPJ\\CDataSocket.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-25T02:37:21.001Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
