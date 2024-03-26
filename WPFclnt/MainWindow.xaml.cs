@@ -141,7 +141,7 @@ namespace WPF
                 using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP))
                 {
                     // [3] 파일 서버로 접속. 주소, 포트번호 변경요망
-                    socket.Connect(IPAddress.Parse("127.0.0.1"), 9090);
+                    socket.Connect(IPAddress.Parse("10.10.20.98"), 26001);
                 //int a = 10;
                 //byte[] data = Encoding.UTF8.GetBytes("Hello");
                 
