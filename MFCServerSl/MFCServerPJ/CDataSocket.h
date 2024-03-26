@@ -15,7 +15,7 @@ public:
 	CMFCServerPJDlg* m_pDlg; //다이얼로그 클래스에 접근할 포인터 변수
 
 	/* 자체 제작 데이터 송수신 함수 */
-	int RecvData(TCHAR* &buffer);
+	int RecvData();
 };
 
 

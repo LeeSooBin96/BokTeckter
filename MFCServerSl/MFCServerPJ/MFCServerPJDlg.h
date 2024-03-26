@@ -46,4 +46,6 @@ public:
 	void ProcessAccept(int nErrorCode);
 	void ProcessClose(int nErrorCode);
 	void ProcessReceive(CDataSocket* pSocket, int nErrorCode);
+	CStatic m_ctrl_recv; //IDC_IMG_RECV
+	CStatic m_ctrl_result; //IDC_IMG_RESULT
 };

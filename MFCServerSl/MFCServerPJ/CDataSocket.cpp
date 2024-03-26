@@ -26,24 +26,36 @@ void CDataSocket::OnReceive(int nErrorCode)
 	CAsyncSocket::OnReceive(nErrorCode);
 	m_pDlg->ProcessReceive(this, nErrorCode);
 }
- /* 데이터 수신 스레드 (수신 메시지 저장할 버퍼 인자로 받음) */
-int CDataSocket::RecvData(TCHAR* &buffer)
+ /* 클라이언트 이미지 수신 및 파일 저장 */
+int CDataSocket::RecvData()
 {
 	/* 메시지 길이 먼저 수신 -> 메시지 수신 */
 	int nLen; //수신할 데이터 길이 
-	this->Receive(&nLen, 4, 0);
-
-	buffer = new TCHAR[nLen];
-	//CByteArray* buffer=new CByteArray;
-	//buffer->SetSize(nLen);
-	int recvLen = this->Receive(buffer, nLen, 0);
-	buffer[recvLen-3] =_T('\0');
-	//wcout << buffer << endl;
-	//cout << (LPCSTR)buffer << endl;
+	if (this->Receive(&nLen, 4, 0) < 0 || nLen < 0) return -1;
 	
-	//CFile saveFile; // 객체 만들고
-	//saveFile.Open(_T("..//save.png"), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary);
-	//saveFile.Write(buffer, nLen); //파일 저장 잘되는것 까지 확인 완료
-	//saveFile.Close();
+	//cout << "받아야할 데이터 길이 : " << nLen << endl;
+
+	TCHAR* buffer = new TCHAR[nLen];
+
+	CFile saveFile; // 객체 만들고
+	saveFile.Open(_T("..//save.bmp"), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary);
+	int recvLen = this->Receive(buffer, nLen, 0);
+	saveFile.Write(buffer, recvLen);
+	
+	cout << "수신받은 데이터 길이" << recvLen << endl;
+	while (recvLen != nLen) {
+		TCHAR* temp=new TCHAR[10000];
+		int nTmp = 0;
+		nTmp=this->Receive(temp, 10000, 0);
+		recvLen += nTmp;
+		cout << "얼마나 오고있나 " << nTmp << " 총 " << recvLen << endl;
+		if (nTmp < 0) break;
+		saveFile.Write(temp, nTmp);
+		delete[] temp;
+	}
+	
+	saveFile.Close();
+	delete[] buffer;
+	
 	return recvLen;
 }
