@@ -4,7 +4,7 @@
 #define DB_SERVER_IP "localhost"
 #define DB_USER_ID "root"
 #define DB_USER_PW "610190"
-#define DB_NAME "sakila" /* 데이터베이스 이름 */
+#define DB_NAME "boktector" /* 데이터베이스 이름 */
 
 class CDBHandle
 {
@@ -13,7 +13,7 @@ class CDBHandle
 
 public:
 	/* DB 초기화 및 연결 */
-	void initializeDB();
+	void initializeDB();\
 	/* DB 연결 종료 */
 	void destroyConnect();
 

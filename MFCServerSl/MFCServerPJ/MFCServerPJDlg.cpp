@@ -255,6 +255,7 @@ void CMFCServerPJDlg::ProcessAccept(int nErrorCode)
 		}
 		m_pAIClient = pClient; //소켓 포인터 저장
 		cout << "AI 접속 완료 \n";
+		SetDlgItemText(IDC_AI_RESULT, _T("Conncet"));
 	}
 	else { //일반 공정 클라이언트 처리
 		CDataSocket* pFactoryCLT = new CDataSocket(this); //각 클라이언트에 대해 비동기 처리
@@ -291,8 +292,73 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	/* 공정 클라이언테 요청 데이터 처리 */
 	int len = pSocket->RecvData(); //검사 이미지 수신
 	if (len < 0) return;
-	cout << "수신 길이: " << len << endl;
 
+	sendIMGToAI(len); //AI에 검사 이미지 송신
+
+	showRecvIMG();//화면에 이미지 출력
+	
+	//AI 모델 결과 수신
+	int nRet;
+	m_pAIClient->Receive(&nRet, 4, 0);
+	cout << "AI 검사 결과 :" << nRet << endl;
+	CString str;
+	switch (nRet)
+	{
+	case 0:
+		str = _T("NG");
+		break;
+	case 1:
+		str = _T("PASS");
+		break;
+	default:
+		break;
+	}
+	SetDlgItemText(IDC_AI_RESULT, str);
+
+	//공정에 결과 송신
+	TCHAR* result = new TCHAR[4];
+	_itow(nRet, result, 10); //C#한테 아스키값으로 가짐...
+	pSocket->Send(result, 4, 0); //0또는 1
+
+	bool* ckPoint = checkProduct();//검사 결과 송신 후 이미지 분석
+	
+	saveResultIMG();//결과 이미지 저장
+
+	//파일 송신
+	CFile readFile;
+	readFile.Open(_T("..//result.bmp"), CFile::modeRead);
+	int nSize = readFile.GetLength();
+	cout <<"보낸 파일 크기: " << nSize << endl;
+	TCHAR* data = new TCHAR[4];
+	_itow(nSize,data,10); //C#한테 아스키값으로 가지는듯?
+	pSocket->Send(data,4,0);
+	
+	data = new TCHAR[nSize];
+	readFile.Read(data, nSize);
+	pSocket->Send(data, nSize, 0);
+	
+	readFile.Close();
+
+	//결과 DB에 저장
+	std::string query = "INSERT INTO TB_DATA(CDateTime,CResult,CGreenHead,CSize,CPole) VALUES(NOW(),";
+	if (nRet == 1) query.append("'PASS',");
+	else query.append("'NG',");
+
+	for (int i = 0; i < 3; i++) {
+		if (ckPoint[i]) query.append("'O'");
+		else query.append("'X'");
+
+		if (i != 2) query.append(",");
+		else query.append(");");
+	}
+	cout << query.c_str() << endl;
+	//m_pDB->excuteQuery(query.c_str());
+	
+	delete ckPoint;
+}
+
+void CMFCServerPJDlg::sendIMGToAI(int len)
+{
 	//저장된 파일 읽기
 	TCHAR* buffer = new TCHAR[len];
 	CFile rFile;
@@ -303,8 +369,11 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	//AI 모델에 이미지 송신
 	m_pAIClient->Send(&len, 4, 0); //파일 크기 보내기
 	m_pAIClient->Send(buffer, len, 0); //파일 데이터 보내기
+	delete[] buffer;
+}
 
-	//화면에 이미지 출력
+void CMFCServerPJDlg::showRecvIMG()
+{
 	CRect rect; //컨트롤 크기 저장할 rect
 	m_ctrl_recv.GetWindowRect(rect); //컨트롤 크기 가져오기
 	CDC* dc; //픽쳐 컨트롤의 dc 포인터 --UI 접근
@@ -314,15 +383,12 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	image.Load(_T("..//save.bmp")); //이미지 가져오기
 	image.StretchBlt(dc->m_hDC, 0, 0, rect.Width(), rect.Height(), SRCCOPY); //화면에 출력
 	ReleaseDC(dc);
-	//AI 모델 결과 수신
-	int nRet;
-	m_pAIClient->Receive(&nRet, 4, 0);
-	cout << "AI 검사 결과 :" << nRet << endl;
-	//공정에 결과 송신
-	TCHAR* result = new TCHAR[4];
-	_itow(nRet, result, 10);
-	//pSocket->Send(result, 4, 0); //0또는 1
-	//검사 결과 송신 후 이미지 분석
+}
+
+bool* CMFCServerPJDlg::checkProduct()
+{
+	CImage image;
+	image.Load(_T("..//save.bmp")); //이미지 가져오기
 	//불량 상태 검사 값
 	bool bGreen = false; //Green Head 존재여부
 	bool bSize = false; //규격 일치 여부
@@ -376,7 +442,7 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 			}
 		}
 	}
-	cout <<"초록색 픽셀 수 :"<< arrGPoint.GetCount() << endl; //확인용
+	cout << "초록색 픽셀 수 :" << arrGPoint.GetCount() << endl; //확인용
 	//초록색인 지점 개수 정상 제품 기준 통계화 해서 조건문 수정할 것
 	if (arrGPoint.GetCount() > 500) {
 		bGreen = true;
@@ -397,7 +463,7 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 		dc1->TextOutW(nRightX, nRightY, _T("Green Head"));
 	}
 
-	CPen pen2; 
+	CPen pen2;
 	pen2.CreatePen(PS_SOLID, 2, RGB(0, 0xff, 0));
 	dc1->SelectObject(&pen2); //펜 색상 변경
 	/* 건전지 찾아내기 테두리 포인트 찾아냄*/
@@ -479,7 +545,13 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	}
 	ReleaseDC(dc1);
 
-	//결과 이미지 저장
+	bool* result = new bool[3];
+	result[0] = bGreen; result[1] = bSize; result[2] = bPole;
+	return result;
+}
+
+void CMFCServerPJDlg::saveResultIMG()
+{
 	CDC* pDC = m_ctrl_result.GetDC();
 	HDC hDC = pDC->m_hDC;
 	RECT rc;
@@ -510,7 +582,7 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 
 	/* 비트맵(DIB) 데이터 추출 */
 	GetDIBits(hDC, hBitmap, 0, rc.bottom, NULL, (LPBITMAPINFO)&bmih, DIB_RGB_COLORS);
-	cout <<"저장될 이미지 크기: "<< bmih.biSizeImage<<endl;
+	cout << "저장될 이미지 크기: " << bmih.biSizeImage << endl;
 	LPBYTE lpBits = new BYTE[bmih.biSizeImage];
 	GetDIBits(hDC, hBitmap, 0, rc.bottom, lpBits, (LPBITMAPINFO)&bmih, DIB_RGB_COLORS);
 	ReleaseDC(pDC);
@@ -540,45 +612,6 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 
 	CloseHandle(hFile);
 	delete[] lpBits;
-	/*참고 사이트: https://l71026.tistory.com/108 
+	/*참고 사이트: https://l71026.tistory.com/108
 				 https://rvs86.tistory.com/134 */
-
-
-
-	//std::locale::global(std::locale("kor")); //유니코드 문자 콘솔에 출력되게 해줌
-	/* 처음 받는 데이터는 이미지 파일 -> 저장하자 
-	 * 그러고 검사 로직 실행하고
-	 * 검사 결과 보내주기
-	 * 검사 결과 DB 저장
-	 */
-	//파일 저장
-	 //CFile saveFile; // 객체 만들고
-	 //saveFile.Open(_T("..//save.png"), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary);
-	 //saveFile.Write(buffer, len); //파일 저장 잘되는것 까지 확인 완료
-	 //saveFile.Close(); //여기서도 확인
-	//받은 메시지 확인
-	//CString strMSG(buffer);
-	//wcout << (LPCSTR)(LPCTSTR)strMSG<<" " << strMSG.GetLength() << endl; //받은 메시지 확인하고 싶으면
-	//메시지 보낼때
-	/*CString temp = _T("PASS");
-	TCHAR* msg = (LPTSTR)(LPCTSTR)temp;
-	wcout << msg << endl;
-	pSocket->Send(msg, temp.GetLength() * sizeof(TCHAR), 0); */
-	//파일 송신
-	CFile readFile;
-	readFile.Open(_T("..//result.bmp"), CFile::modeRead);
-	int nSize = readFile.GetLength();
-	cout <<"보낸 파일 크기: " << nSize << endl;
-	TCHAR* data = new TCHAR[4];
-	_itow(nSize,data,10);
-	pSocket->Send(data,4,0);
-	
-	data = new TCHAR[nSize];
-	readFile.Read(data, nSize);
-	pSocket->Send(data, nSize, 0);
-	
-	readFile.Close();
-	delete[] buffer;
-	
-	//delete data;
 }

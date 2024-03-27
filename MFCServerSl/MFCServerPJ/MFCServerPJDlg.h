@@ -16,6 +16,11 @@ class CMFCServerPJDlg : public CDialogEx
 	CSocket* m_pAIClient; //AI 모델 연결 소켓
 	CArray<CDataSocket*> m_arrCLTList; //클라이언트 연결 소켓
 
+	/* 생성한 메서드 */
+	void sendIMGToAI(int); //AI에 검사 이미지 송신
+	void showRecvIMG(); //화면에 수신된 이미지 출력
+	bool* checkProduct(); //제품 검사(각 부분별 검사 결과 반환)
+	void saveResultIMG(); //결과 이미지 저장
 // 생성입니다.
 public:
 	CMFCServerPJDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.

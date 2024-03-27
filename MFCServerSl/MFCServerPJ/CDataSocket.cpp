@@ -33,7 +33,7 @@ int CDataSocket::RecvData()
 	int nLen; //수신할 데이터 길이 
 	if (this->Receive(&nLen, 4, 0) < 0 || nLen < 0) return -1;
 	
-	//cout << "받아야할 데이터 길이 : " << nLen << endl;
+	cout << "받아야할 데이터 길이 : " << nLen << endl;
 
 	TCHAR* buffer = new TCHAR[nLen];
 
