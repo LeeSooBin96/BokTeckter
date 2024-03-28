@@ -161,192 +161,165 @@ HCURSOR CMFCIMGAnalDlg::OnQueryDragIcon()
 using namespace std;
 void CMFCIMGAnalDlg::OnBnClickedBtnImg()
 {
-	/* 1. 색상 - 초록색 검사
-	 * 그레이 레벨 변환해서
-	 * 건전지 테두리 따기
-	 * 2. 두께 길이 측정
-	 * 3. 극 여부 판단
-	 */
-	CRect rect; //픽쳐 컨트롤의 크기를 저장할 rect
+	/* 픽처 컨트롤 다루기 위한 준비 */
+	CRect rect; //픽처 컨트롤 크기를 저장할 rect
 	m_picture_control.GetWindowRect(rect); //컨트롤 크기 가져오기
-	CDC* dc; //픽쳐 컨트롤의 dc 포인터 --GDI에 접근하기 위함
-	dc = m_picture_control.GetDC();
+	CDC* dc; //픽처 컨트롤 dc 포인터
+	dc = m_picture_control.GetDC(); //dc 가져오기
 
-	CPngImage pngImg; //png파일은 리소스 파일로 다뤄야함
-	pngImg.Load(IDB_PNG, AfxGetResourceHandle());
-	CBitmap bitmap; //비트맵 이미지로 변환
+	/* 이미지 로드 */
+	CPngImage pngImg; //png파일을 다룰때는 리소스 파일 활용
+	pngImg.Load(IDB_PNG,AfxGetResourceHandle());
+	CBitmap bitmap; //비트맵 이미지로 변환하기
 	bitmap.Attach(pngImg.Detach());
-	CImage image;
+	CImage image; //검사할 이미지 객체로 로드
 	image.Attach(bitmap);
-	
-	int nWidth = image.GetWidth();
-	int nHeight = image.GetHeight();
-	unsigned char* fm = (unsigned char*)image.GetBits();
 
-	//화면상 상대 위치값 구하기위함(화면상 좌표)
+	/* 화면에 이미지 출력 */
+	image.StretchBlt(dc->m_hDC, 0, 0, rect.Width(), rect.Height(), SRCCOPY);
+
+	/* 이미지 검사에 필요한 변수 */
+	int nWidth = image.GetWidth(); //이미지 너비
+	int nHeight = image.GetHeight(); //이미지 높이
+	unsigned char* fmO = (unsigned char*)image.GetBits(); //원본 이미지 픽셀 포인터
+
+	//화면상 상대 위치값 구하기 위한 비율값
 	double nRateX = (double)rect.Width() / nWidth;
 	double nRateY = (double)rect.Height() / nHeight;
 
-	CImage grayImg;
-	grayImg.Create(nWidth, nHeight, 8);
+	CImage grayImg; //그레이 레벨로 변환한 이미지 저장할 객체
+	grayImg.Create(nWidth, nHeight, 8); 
 	static RGBQUAD rgb[256];
-	for (int i = 0; i < 256; i++)
-	{
+	for (int i = 0; i < 256; i++) {
 		rgb[i].rgbRed = rgb[i].rgbBlue = rgb[i].rgbGreen = i;
 	}
 	grayImg.SetColorTable(0, 256, rgb);
-	unsigned char* fmG = (unsigned char*)grayImg.GetBits();
+	unsigned char* fmG = (unsigned char*)grayImg.GetBits(); //그레이 레벨 이미지 픽셀 포인터
 
-
-
-	int nPitch = grayImg.GetPitch();
-	/* 색상 검사 - 초록색 머리 존재 */
-	CArray<CPoint> arrGPoint;
-	/* */
-	for (int j = 0;j < nHeight;j++) {
-	    for (int i = 0;i < nWidth;i++) {
-	        unsigned char r, g, b;
-	        r = fm[j * 3 * nPitch + i * 3 + 2];
-	        g = fm[j * 3 * nPitch + i * 3 + 1];
-	        b = fm[j * 3 * nPitch + i * 3 ]; //bgr 순서
-	        fmG[j * nPitch + i] = 0.299 * r + 0.587 * g + 0.114 * b;
-			/* 색상 검사 - 초록색 머리 존재 */
-			if (r == 0 && b == 0 && g>100 && i > 240 && i < 400 && j < 240) //이미지 중앙 상단부에 초록색 탐지
-			{
-				arrGPoint.Add(CPoint(i*nRateX, j*nRateY));
-			}
-	    }
-	}
-	cout << arrGPoint.GetCount() << endl;
+	int nPitch = grayImg.GetPitch(); //피치(한행 픽셀수)는 그레이 레벨값만 필요
+	/* 여기까지 필요한 변수들 준비 완료 */
 	
-	//이미지를 픽쳐 컨트롤 크기로
-	image.StretchBlt(dc->m_hDC, 0, 0, rect.Width(), rect.Height(), SRCCOPY);
-	
+	/* 검사할 사항
+	 * 1. 몸통 너비, 높이 --명암 변화로 계산 완료
+	 * 2. 극의 존재 여부 --위에서 구한 값으로 수치 통계내면 됨
+	 * 3. 프린팅 상태 --이게 문제임... 어떻게 할까
+	 * 우선 이미지 그레이 레벨로 변환 */
+	/* 색상 추출할 배열 */
+	//CArray<CPoint> arrRocket; //제품: 로케트
+	CArray<CPoint> arrEnergizer; //제품: 에너자이저
+	//CArray<CPoint> arrDuracell; //제품: 듀라셀
+	//CArray<CPoint> arrBexelB; //제품: 벡셀 B타입
+	//CArray<CPoint> arrBexelA; //제품: 백셀 A타입
 
-	/* 건전지 찾아내기 테두리 포인트 찾아냄*/
-	CArray<CPoint> arrContour;
-
-	for (int j = 50; j < 480; j++) {
-		for (int i = 200; i < 400; i++) {
-			if (abs(fmG[j * nPitch + i] - fmG[j * nPitch + i + 1]) > 5) { //명도차이가 10이상이면
-				arrContour.Add(CPoint(i * nRateX, j * nRateY));
+	for (int j = 0; j < nHeight; j++) {
+		for (int i = 0; i < nWidth; i++) {
+			unsigned char r, g, b;
+			r = fmO[j * 3 * nPitch + i * 3 + 2];
+			g = fmO[j * 3 * nPitch + i * 3 + 1];
+			b = fmO[j * 3 * nPitch + i * 3 ]; //bgr 순서
+			fmG[j * nPitch + i] = 0.299 * r + 0.587 * g + 0.114 * b;
+			/*if (j > 360 && j < 450 && i > 250 && i < 420) {
+			if (r < 100 && g < 100 && b>150)
+				arrRocket.Add(CPoint(i * nRateX, j * nRateY));
+			}*/
+			if ( j > 70 && j < 200 && i > 200 && i < 470) {
+				if (r == 0 && g == 0 && b == 0)
+					arrEnergizer.Add(CPoint(i * nRateX, j * nRateY));
 			}
+			//if (j>70&&j<220 && i > 200 && i < 470) { //70,220,200,470
+			//	if (r>=100&&r<125&&g>40&&g<90&&b>10&&b<100 ||
+			//		r>=70&&r<100&&g>10&&g<50&&b<10)
+			//		arrDuracell.Add(CPoint(i * nRateX, j * nRateY));
+			//}
+			//if (j>70&&j<180 && i > 200 && i < 470) { //70,180
+			//	if (r == 0 && b == 0 && g > 90)
+			//		arrBexelB.Add(CPoint(i * nRateX, j * nRateY));
+			//}
+			//if (j >300&&j<450 && i > 200 && i < 470) { //300,450
+			//	if (r > 70 && r < 175 && g < 100 && b < 50)
+			//		arrBexelA.Add(CPoint(i * nRateX, j * nRateY));
+			//	//cout << "( " << i << ", " << j << " ) R: " << (int)r << " G: " << (int)g << " B: " << (int)b << endl;
+			//}
 		}
 	}
+	//cout << "( " << i << ", " << j << " ) R: " << (int)r << " G: " << (int)g << " B: " << (int)b << endl;
+	//grayImg.StretchBlt(dc->m_hDC, 0, 0, rect.Width(), rect.Height(), SRCCOPY); //확인용
+	//cout << "Blue Bottom: " << arrRocket.GetCount() << endl;
+	cout << "Black Head: " << arrEnergizer.GetCount() << endl;
+	//cout << "Orange Head: " << arrDuracell.GetCount() << endl;
+	//cout << "Green Head: " << arrBexelB.GetCount() << endl;
+	//cout << "Orange Bottom: " << arrBexelA.GetCount() << endl;
 
-	//선 그리기
-	CPen pen;
-	pen.CreatePen(PS_SOLID, 2, RGB(0xff, 0xff, 0)); //펜 노란색으로
-	CPen* pOldPen = dc->SelectObject(&pen); //새펜으로 선택하고 기존 펜 반환
-	CBrush* pOldBrush = (CBrush*)dc->SelectStockObject(NULL_BRUSH); //색채우기 끄기
-	//dc->Ellipse(CRect(300 * nRateX, 80 * nRateY, 360 * nRateX, 100 * nRateY));
-	//dc->MoveTo(280*nRateX, 100*nRateY);
-	//dc->LineTo(380*nRateX, 450*nRateY);
-
-	/* 색상 검출 결과 프린트 */
-	//for (int i = 0; i < arrGPoint.GetCount(); i++) {
-	//	dc->Ellipse(arrGPoint[i].x, arrGPoint[i].y, arrGPoint[i].x + 1, arrGPoint[i].y + 1);
-	//}
-	int nLeftX = arrGPoint[0].x;
-	int nLeftY = arrGPoint[0].y;
-	int nRightX = arrGPoint[0].x;
-	int nRightY = arrGPoint[0].y;
-
-	for (int i = 0; i < arrGPoint.GetCount(); i++) {
-		if (arrGPoint[i].x < nLeftX) nLeftX = arrGPoint[i].x;
-		else if (arrGPoint[i].x > nRightX) nRightX = arrGPoint[i].x;
-		if (arrGPoint[i].y < nLeftY) nLeftY = arrGPoint[i].y;
-		else if (arrGPoint[i].y > nRightY) nRightY = arrGPoint[i].y;
+	/* 건전지(객체) 찾아내기 - 명암 변화 이용 */
+	CArray<CPoint> arrContour;
+	for (int j = 50; j < 460; j++) { //높이 범위
+		for (int i = 200; i < 470; i++) { //너비 범위
+			if (abs(fmG[j * nPitch + i] - fmG[j * nPitch + i + 1]) > 5)
+				arrContour.Add(CPoint(i * nRateX, j * nRateY)); //명도차이로 객체 인식
+		}
 	}
-	int nGreenMinY = nLeftY;
+	cout << "Object Number: " << arrContour.GetCount() << endl;
 
-	dc->Rectangle(nLeftX, nLeftY, nRightX, nRightY);
-	dc->TextOutW(nRightX, nRightY, _T("Green Head"));
-	/* */
+	/* 인식된 객체의 높이 너비 구하기 */
+	int nLeftX = arrContour[0].x;
+	int nLeftY = arrContour[0].y;
+	int nRightX = arrContour[0].x;
+	int nRightY = arrContour[0].y;
 
-	CPen pen2;
-	pen2.CreatePen(PS_SOLID, 2, RGB(0, 0xff, 0));
-	dc->SelectObject(&pen2);
-	//for (int i = 0; i < arrContour.GetCount(); i++) {
-	//	dc->Ellipse(arrContour[i].x, arrContour[i].y, arrContour[i].x + 1, arrContour[i].y + 1);
-	//}
 	for (int i = 0; i < arrContour.GetCount(); i++) {
 		if (arrContour[i].x < nLeftX) nLeftX = arrContour[i].x;
 		else if (arrContour[i].x > nRightX) nRightX = arrContour[i].x;
 		if (arrContour[i].y < nLeftY) nLeftY = arrContour[i].y;
 		else if (arrContour[i].y > nRightY) nRightY = arrContour[i].y;
 	}
-	/*너비 출력*/
-	dc->MoveTo(nLeftX, nLeftY + (nRightY - nLeftY) / 2);
-	dc->LineTo(nLeftX + 5, nLeftY +(nRightY - nLeftY) / 2 - 5);
-	dc->MoveTo(nLeftX, nLeftY + (nRightY - nLeftY) / 2);
-	dc->LineTo(nLeftX + 5, nLeftY + (nRightY - nLeftY) / 2 + 5);
-	dc->MoveTo(nLeftX, nLeftY + (nRightY - nLeftY) / 2);
-	dc->LineTo(nRightX, nLeftY + (nRightY - nLeftY) / 2);
-	dc->LineTo(nRightX - 5, nLeftY + (nRightY - nLeftY) / 2 - 5);
-	dc->MoveTo(nRightX, nLeftY + (nRightY - nLeftY) / 2);
-	dc->LineTo(nRightX - 5, nLeftY + (nRightY - nLeftY) / 2 + 5);
-
-	CString strWidth;
-	strWidth.Format(_T("Width : %d"), nRightX - nLeftX);
-	dc->TextOutW(nRightX, nLeftY+(nRightY - nLeftY) / 2, strWidth);
-
-	/*높이 출력*/
-	dc->MoveTo(nLeftX+(nRightX-nLeftX)/2, nLeftY);
-	dc->LineTo(nLeftX + (nRightX - nLeftX) / 2 - 5, nLeftY + 5);
-	dc->MoveTo(nLeftX + (nRightX - nLeftX) / 2, nLeftY);
-	dc->LineTo(nLeftX + (nRightX - nLeftX) / 2 + 5, nLeftY + 5);
-	dc->MoveTo(nLeftX + (nRightX - nLeftX) / 2, nLeftY);
-	dc->LineTo(nLeftX + (nRightX - nLeftX) / 2, nRightY);
-	dc->LineTo(nLeftX + (nRightX - nLeftX) / 2 - 5, nRightY - 5);
-	dc->MoveTo(nLeftX + (nRightX - nLeftX) / 2, nRightY);
-	dc->LineTo(nLeftX + (nRightX - nLeftX) / 2 + 5, nRightY - 5);
-
-	CString strHeight;
-	strWidth.Format(_T("Height : %d"), nRightY - nLeftY);
-	dc->TextOutW(nLeftX + (nRightX - nLeftX) / 2, nRightY, strWidth);
-
-	CPen pen3;
-	pen3.CreatePen(PS_SOLID, 2, RGB(0xff, 0, 0));
-	dc->SelectObject(&pen3);
-
-	cout << nGreenMinY - nLeftY << endl;
-	if(nGreenMinY-nLeftY<5){
-		dc->TextOutW(nLeftX + (nRightX - nLeftX) / 2, nLeftY - 20, _T("Pole : false"));
+	cout << "건전지 전체 높이: " << nRightY - nLeftY << ", 너비: " << nRightX - nLeftX << endl;
+	/* 건전지 몸통의 높이 구하기(너비는 위에서 구한 것과 일치) */
+	int nBodyY = nRightY;
+	for (int i = 0; i < arrContour.GetCount(); i++) {
+		if (((arrContour[i].x >= nLeftX && arrContour[i].x <= nLeftX + 5)
+			|| (arrContour[i].x >= nRightX - 5 && arrContour[i].x <= nRightX))
+			&& arrContour[i].y < nBodyY)
+			nBodyY = arrContour[i].y;
 	}
-	else {
-		dc->Ellipse(CRect(nLeftX + (nRightX - nLeftX) / 2 -10, nLeftY + 10, nLeftX + (nRightX - nLeftX) / 2+10, nLeftY));
-		dc->TextOutW(nLeftX + (nRightX - nLeftX) / 2, nLeftY - 20, _T("Pole : true"));
+	cout << "건전지 몸통 높이: " << nRightY - nBodyY << endl;
+
+	/* 검출 결과 화면에 그리기 */
+	CPen yelloPen;
+	yelloPen.CreatePen(PS_SOLID, 2, RGB(0xff, 0xff, 0));
+	CPen* pOldPen = dc->SelectObject(&yelloPen); //새 펜 적용하고 기존 펜 반환
+	CBrush* pOldBrush = (CBrush*)dc->SelectStockObject(NULL_BRUSH); //색채우기 끄기
+
+	//dc->Rectangle(200 * nRateX, 300 * nRateY, 470 * nRateX, 450 * nRateY); //범위 확인용
+	//200,470
+
+	for (int i = 0; i < arrContour.GetCount(); i++) { //객체 인식 확인용
+		dc->Ellipse(arrContour[i].x, arrContour[i].y, arrContour[i].x + 1, arrContour[i].y + 1);
 	}
+	CPen greenPen;
+	greenPen.CreatePen(PS_SOLID, 2, RGB(0, 0xff, 0));
+	dc->SelectObject(&greenPen);
+	//for (int i = 0; i < arrRocket.GetCount(); i++) { //객체 인식 확인용
+	//	dc->Ellipse(arrRocket[i].x, arrRocket[i].y, 
+	// arrRocket[i].x+1, arrRocket[i].y+1);
+	//}
+	for (int i = 0; i < arrEnergizer.GetCount(); i++) { //객체 인식 확인용
+		dc->Ellipse(arrEnergizer[i].x, arrEnergizer[i].y, arrEnergizer[i].x+1, arrEnergizer[i].y+1);
+	}
+	//for (int i = 0; i < arrDuracell.GetCount(); i++) { //객체 인식 확인용
+	//	dc->Ellipse(arrDuracell[i].x, arrDuracell[i].y, arrDuracell[i].x+1, arrDuracell[i].y+1);
+	//}
+	//for (int i = 0; i < arrBexelB.GetCount(); i++) { //객체 인식 확인용
+	//	dc->Ellipse(arrBexelB[i].x, arrBexelB[i].y, arrBexelB[i].x+1, arrBexelB[i].y+1);
+	//}
+	//for (int i = 0; i < arrBexelA.GetCount(); i++) { //객체 인식 확인용
+	//	dc->Ellipse(arrBexelA[i].x, arrBexelA[i].y, arrBexelA[i].x+1, arrBexelA[i].y+1);
+	//}
+
+	/* 몸통 높이,너비 출력 */
+	
 
 	dc->SelectObject(pOldPen); //기존 펜으로 복구
-	dc->SelectObject(pOldBrush);
-	//UpdateData();
-
-	ReleaseDC(dc); //dc할당 해제
+	dc->SelectObject(pOldBrush); //기존 브러쉬 반환
+	ReleaseDC(dc); //할당 해제
 }
 
-//bool CMFCIMGAnalDlg::isGreenHead(CImage* image)
-//{ // 초록색 탐지
-//
-//	int nWidth = image->GetWidth();
-//	int nHeight = image->GetHeight();
-//	int nPitch = image->GetPitch();
-//
-//	unsigned char* fm = (unsigned char*)image->GetBits();
-//
-//	CArray<CPoint> arrPoint;
-//	for (int j = 0; j < nHeight; j++) {
-//		for (int i = 0; i < nWidth; i++) {
-//			unsigned char r, g, b;
-//			r = fm[j * 3 * nPitch + i * 3 + 2];
-//			g = fm[j * 3 * nPitch + i * 3 + 1];
-//			b = fm[j * 3 * nPitch + i * 3];
-//			if (r == 0 && b == 0 && i > 240 && i < 400 && j < 240) //이미지 중앙의 초록색 탐지
-//				arrPoint.Add(CPoint(i, j));
-//		}
-//	}
-//
-//	cout << arrPoint.GetCount() << endl;
-//	return false;
-//}
