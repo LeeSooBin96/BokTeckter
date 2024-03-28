@@ -303,32 +303,44 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	cout << "AI 검사 결과 :" << nRet << endl;
 	CString strProduct;
 	bool* ckPoint = NULL; //이미지 분석 결과 저장할 포인터(규격,극,프린팅)
+	std::string query = "INSERT INTO TB_DATA(DDATE,DBRAND,DRESULT,DSIZE,DPOLE,DPRINT) VALUES(NOW(),'";
 	switch (nRet)
 	{
 	case 1:
 		strProduct = _T("Bexel_A");
+		query.append("Bexel_A");
 		ckPoint = checkProduct(1);
 		break;
 	case 2:
 		strProduct = _T("Bexel_B");
+		query.append("Bexel_B");
 		ckPoint = checkProduct(2);
 		break;
 	case 3:
 		strProduct = _T("Duracell");
+		query.append("Duracell");
 		ckPoint = checkProduct(3);
 		break;
 	case 4:
 		strProduct = _T("Energizer");
+		query.append("Energizer");
 		ckPoint = checkProduct(4);
 		break;
 	case 5:
 		strProduct = _T("Rocket");
+		query.append("Rocket");
 		ckPoint = checkProduct(5);
 		break;
 	default:
 		break;
 	}
 	SetDlgItemText(IDC_AI_RESULT, strProduct);
+
+	/* 브랜드명 화면에 출력 */
+	CDC* pDC;
+	pDC = m_ctrl_result.GetDC();
+	pDC->TextOutW(5, 5, strProduct);
+	ReleaseDC(pDC);
 
 	/* 불량 여부 판단 */
 	int nResult = 1;
@@ -360,9 +372,8 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 	readFile.Close();
 
 	//결과 DB에 저장 --DB다시 구성해야함
-	/*std::string query = "INSERT INTO TB_DATA(CDateTime,CResult,CGreenHead,CSize,CPole) VALUES(NOW(),";
-	if (nRet == 1) query.append("'PASS',");
-	else query.append("'NG',");
+	if (nResult == 1) query.append("','PASS',");
+	else query.append("','NG',");
 
 	for (int i = 0; i < 3; i++) {
 		if (ckPoint[i]) query.append("'O'");
@@ -371,8 +382,8 @@ void CMFCServerPJDlg::ProcessReceive(CDataSocket* pSocket, int nErrorCode)
 		if (i != 2) query.append(",");
 		else query.append(");");
 	}
-	cout << query.c_str() << endl;*/
-	//m_pDB->excuteQuery(query.c_str());
+	cout << query.c_str() << endl;
+	m_pDB->excuteQuery(query.c_str());
 	
 	delete ckPoint;
 }
