@@ -19,8 +19,12 @@ class CMFCServerPJDlg : public CDialogEx
 	/* 생성한 메서드 */
 	void sendIMGToAI(int); //AI에 검사 이미지 송신
 	void showRecvIMG(); //화면에 수신된 이미지 출력
-	bool* checkProduct(); //제품 검사(각 부분별 검사 결과 반환)
+	bool* checkProduct(int nPNum); //제품 검사(각 부분별 검사 결과 반환)
 	void saveResultIMG(); //결과 이미지 저장
+	/* 이미지 그레이 레벨 변환 및 색상 추출 */
+	void changeIMGtoGray(int nPNum, int nHeight, int nWidth, int nPitch, double nRateX, double nRateY,
+		unsigned char* fmO, unsigned char* fmG, CArray<CPoint>& arrColor);
+	bool examinePrint(int nPNum, int nWidth, CArray<CPoint>& arrContour,CArray<CPoint>& arrColor); //프린팅 상태 검사
 // 생성입니다.
 public:
 	CMFCServerPJDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
